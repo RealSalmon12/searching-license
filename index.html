@@ -4,66 +4,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>자격증 길찾기</title>
-  <meta name="description" content="관심 분야와 직무로 나에게 맞는 자격증을 찾고, 따는 순서를 확인하세요.">
+  <meta name="description" content="뭐부터 따야 할지 모르겠다면, 질문 3개로 나에게 맞는 자격증과 따는 순서를 찾아보세요.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='9' cy='23' r='5' fill='%232d6a63'/%3E%3Ccircle cx='23' cy='9' r='5' fill='%232d6a63'/%3E%3Cpath d='M9 23 L9 15 Q9 9 15 9 L23 9' stroke='%232d6a63' stroke-width='3' fill='none'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="top">
-    <a class="brand" href="#/">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="9" cy="23" r="4.5"/><circle cx="23" cy="9" r="4.5"/><path d="M9 23 L9 15 Q9 9 15 9 L23 9"/></svg>
-      자격증 길찾기
-    </a>
-    <nav class="tabs" aria-label="화면 전환">
-      <a href="#/" data-view="find">찾기</a>
-      <a href="#/saved" data-view="saved">내 루트 <span class="count" id="savedCount"></span></a>
-    </nav>
+    <div class="top-in">
+      <a class="brand" href="#/">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="9" cy="23" r="4.5"/><circle cx="23" cy="9" r="4.5"/><path d="M9 23 L9 15 Q9 9 15 9 L23 9"/></svg>
+        자격증 길찾기
+      </a>
+      <nav class="tabs" aria-label="메뉴">
+        <a href="#/" data-view="home">처음</a>
+        <a href="#/all" data-view="all">전체 자격증</a>
+        <a href="#/saved" data-view="saved">내 루트<span class="count" id="savedCount"></span></a>
+      </nav>
+    </div>
   </header>
 
-  <main class="layout">
-    <section class="finder" id="finder">
-      <div class="intro" id="intro">
-        <h1>하고 싶은 일로<br>자격증 찾기</h1>
-        <p class="lede">관심 분야나 직무를 고르면 딸 만한 자격증과 따는 순서를 보여줘요.</p>
+  <main id="app"></main>
 
-        <label class="search">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
-          <input id="q" type="search" placeholder="직무나 자격증 이름 (예: 개발자, 요리)" autocomplete="off">
-        </label>
-
-        <div class="who" role="radiogroup" aria-label="나는">
-          <span class="who-label">나는</span>
-          <button type="button" role="radio" data-who="all">전체 보기</button>
-          <button type="button" role="radio" data-who="hs">고등학생</button>
-          <button type="button" role="radio" data-who="job">취준생</button>
-        </div>
-
-        <div class="areas" id="areas" aria-label="관심 분야"></div>
-        <button type="button" class="more-areas" id="moreAreas" aria-expanded="false" aria-controls="areas">분야 전체 보기</button>
-      </div>
-
-      <div class="saved-head" id="savedHead" hidden>
-        <h1>내 루트</h1>
-        <p class="lede">담아둔 자격증과 진행 상황이에요. 루트의 역을 눌러 완료 표시를 할 수 있어요.</p>
-      </div>
-
-      <div class="list-bar">
-        <p id="resultInfo" aria-live="polite"></p>
-        <label class="sort">정렬
-          <select id="sort">
-            <option value="rec">추천순</option>
-            <option value="easy">쉬운 순</option>
-            <option value="hard">어려운 순</option>
-            <option value="name">이름순</option>
-          </select>
-        </label>
-      </div>
-      <ol class="list" id="list"></ol>
-    </section>
-
-    <aside class="detail" id="detail" aria-live="polite"></aside>
-  </main>
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="drawer" id="drawer" aria-label="자격증 자세히 보기" hidden></aside>
 
   <footer class="foot">
     <p>시험 과목, 응시자격, 일정은 바뀔 수 있어요. 접수 전에 각 시행처에서 꼭 확인하세요.</p>
